@@ -10,5 +10,6 @@
         git remote add origin https://github.com/Sandilya0241/MachineLearningE2E.git  
         git push -u origin main'''
     * setup.py -> Project setup
-	* requirements.txt file
+        * This file will help our code to work as package (pip install) or use it in other programs.
+	* requirements.txt file - This file is needed to install as part of project.
 	
