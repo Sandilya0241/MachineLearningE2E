@@ -12,4 +12,5 @@
     * setup.py -> Project setup
         * This file will help our code to work as package (pip install) or use it in other programs.
 	* requirements.txt file - This file is needed to install as part of project.
+* Added src folder and build 
 	
