@@ -13,4 +13,6 @@
         * This file will help our code to work as package (pip install) or use it in other programs.
 	* requirements.txt file - This file is needed to install as part of project.
 * Added src folder and build 
-	
+* Create components that deals with Data Ingestion, Data Transformation, and Model Trainer Functionalities.
+* Create pipeline to Train the models and to Predict output.
+* Add a file for Common Utility Functions, Logging, and Exception Handling. 
