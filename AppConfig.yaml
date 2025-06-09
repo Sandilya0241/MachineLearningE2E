@@ -1,0 +1,13 @@
+features:
+  input_features:
+    categorical_features:
+      - gender
+      - race_ethnicity
+      - parental_level_of_education
+      - lunch
+      - test_preparation_course
+    numerical_features:
+      - reading_score
+      - writing_score
+  target_features:
+    - math_score
