@@ -6,7 +6,8 @@ from src.exception import CustomException
 from src.logger import logging
 from dataclasses import dataclass
 
-from src.components.data_transformation import DataTransformation
+# from src.components.data_transformation import DataTransformation
+# from src.components.model_trainer import ModelTraining
 
 @dataclass
 class DataInjestionConfig:
@@ -46,4 +47,13 @@ class DataInjestion:
             )
         except Exception as ex:
             raise CustomException(ex, sys)
+        
+
+# if __name__=="__main__":
+#     object=DataInjestion()
+#     train_path,test_path=object.initiate_data_injestion()
+#     dt_object=DataTransformation()
+#     train_arr,test_arr,_=dt_object.transform_data(train_path,test_path)
+#     mt_object=ModelTraining()
+#     print(mt_object.initiate_model_training(train_arr,test_arr))
 
