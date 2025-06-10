@@ -34,7 +34,7 @@ class DataTransformation:
 
             appCfg = ApplicationConfig().getAppConfig()
 
-            numeric_columns=appCfg.get("features").get("input_features").get("numerical_features")
+            numeric_columns=appCfg.get("config").get("features").get("input_features").get("numerical_features")
             numeric_pipeline = Pipeline(
                 steps=[
                     ("imputer",SimpleImputer(strategy="median")),
@@ -42,7 +42,7 @@ class DataTransformation:
                 ]
             )
 
-            categorical_columns=appCfg.get("features").get("input_features").get("categorical_features")
+            categorical_columns=appCfg.get("config").get("features").get("input_features").get("categorical_features")
             categorical_pipeline = Pipeline(
                 steps=[
                     ("imputer",SimpleImputer(strategy="most_frequent")),
@@ -84,7 +84,7 @@ class DataTransformation:
             logging.info("Obtaining preprocessor object.")
             pre_processing_obj = self.pre_processing()
 
-            target_column_name=appCfg.get("features").get("target_features")[0]
+            target_column_name=appCfg.get("config").get("features").get("target_features")[0]
             target_column_name="math_score"
             input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
             target_feature_train_df=train_df[target_column_name]

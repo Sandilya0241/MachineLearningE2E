@@ -3,6 +3,8 @@ import sys
 import os
 import dill
 from src.exception import CustomException
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import r2_score
 
 class ApplicationConfig(object):
     __appConfig = {}
@@ -39,10 +41,20 @@ def evaluate_models(X_train,y_train,X_test,y_test,models):
     This function is useful in evaluating models and collecting it's respective R2 score.
     '''
     try:
-        from sklearn.metrics import r2_score
+        
+        appCfg = ApplicationConfig().getAppConfig()
+        params=appCfg.get("config").get("params")
         model_report = {}
         
         for key, model in models.items():
+            # model.fit(X_train,y_train)
+            param=params[key]
+            if param is None:
+                param={}
+            gridCV = GridSearchCV(model,param_grid=param,cv=3)
+            gridCV.fit(X_train,y_train)
+
+            model.set_params(**gridCV.best_params_)
             model.fit(X_train,y_train)
 
             y_train_pred=model.predict(X_train)
