@@ -3,9 +3,7 @@ import numpy as np
 from flask import Flask,request,render_template
 from src.pipelines.predict_pipeline import StudentData,PredictPipeline
 
-application=Flask(__name__)
-
-app=application
+app=Flask(__name__)
 
 ###
 # 
