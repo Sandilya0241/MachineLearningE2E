@@ -25,22 +25,25 @@ app=application
 @app.route("/")
 @app.route("/predictdata",methods=["GET","POST"])
 def predict_datapoint():
-    if request.method == "GET":
-        return render_template("Home.html")
-    else:
-        stud_dt=StudentData(
-            gender=request.form.get("gender"),
-            race_ethnicity=request.form.get("race_ethnicity"),
-            parental_level_of_education=request.form.get("parental_level_of_education"),
-            lunch=request.form.get("lunch"),
-            test_preparation_course=request.form.get("test_preparation_course"),
-            reading_score=float(request.form.get("reading_score")),
-            writing_score=float(request.form.get("writing_score"))
-        )
-        features_df=stud_dt.get_data_as_data_frame()
-        pred_ppl=PredictPipeline(features_df)
-        results=pred_ppl.predict()
-        return render_template("Home.html", results=results)
+    try:
+        if request.method == "GET":
+            return render_template("Home.html")
+        else:
+            stud_dt=StudentData(
+                gender=request.form.get("gender"),
+                race_ethnicity=request.form.get("race_ethnicity"),
+                parental_level_of_education=request.form.get("parental_level_of_education"),
+                lunch=request.form.get("lunch"),
+                test_preparation_course=request.form.get("test_preparation_course"),
+                reading_score=float(request.form.get("reading_score")),
+                writing_score=float(request.form.get("writing_score"))
+            )
+            features_df=stud_dt.get_data_as_data_frame()
+            pred_ppl=PredictPipeline(features_df)
+            results=pred_ppl.predict()
+            return render_template("Home.html", results=results)
+    except Exception as ex:
+        raise ex
 
 
 if __name__=="__main__":
