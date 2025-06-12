@@ -5,14 +5,16 @@ from src.pipelines.predict_pipeline import StudentData,PredictPipeline
 
 application=Flask(__name__)
 
+app=application
+
 ###
 # 
 # Route for home page
 # 
 # ###
-@application.route("/")
-def index():
-    return render_template('index.html')
+# @application.route("/")
+# def index():
+#     return render_template('index.html')
 
 
 ###
@@ -20,7 +22,8 @@ def index():
 # Function to predict the output
 # 
 # ###
-@application.route("/predictdata",methods=["GET","POST"])
+@app.route("/")
+@app.route("/predictdata",methods=["GET","POST"])
 def predict_datapoint():
     if request.method == "GET":
         return render_template("Home.html")
@@ -41,4 +44,4 @@ def predict_datapoint():
 
 
 if __name__=="__main__":
-    application.run(host='0.0.0.0',debug=True)
+    app.run(host='0.0.0.0',debug=True)
