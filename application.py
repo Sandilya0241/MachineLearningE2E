@@ -3,14 +3,14 @@ import numpy as np
 from flask import Flask,request,render_template
 from src.pipelines.predict_pipeline import StudentData,PredictPipeline
 
-app=Flask(__name__)
+application=Flask(__name__)
 
 ###
 # 
 # Route for home page
 # 
 # ###
-@app.route("/")
+@application.route("/")
 def index():
     return render_template('index.html')
 
@@ -20,7 +20,7 @@ def index():
 # Function to predict the output
 # 
 # ###
-@app.route("/predictdata",methods=["GET","POST"])
+@application.route("/predictdata",methods=["GET","POST"])
 def predict_datapoint():
     if request.method == "GET":
         return render_template("Home.html")
@@ -41,4 +41,4 @@ def predict_datapoint():
 
 
 if __name__=="__main__":
-    app.run()
+    application.run(host='0.0.0.0',port=5000)
