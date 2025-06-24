@@ -27,7 +27,7 @@ app=application
 def predict_datapoint():
     try:
         if request.method == "GET":
-            return render_template("Home.html")
+            return render_template("home.html")
         else:
             stud_dt=StudentData(
                 gender=request.form.get("gender"),
@@ -41,7 +41,7 @@ def predict_datapoint():
             features_df=stud_dt.get_data_as_data_frame()
             pred_ppl=PredictPipeline(features_df)
             results=pred_ppl.predict()
-            return render_template("Home.html", results=results)
+            return render_template("home.html", results=results)
     except Exception as ex:
         raise ex
 
